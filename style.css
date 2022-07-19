@@ -1,0 +1,349 @@
+
+/*Validate your HTML and CSS code using the W3C validator*/
+/* Make use of
+-webkit-transform: 
+-webkit transition:
+@-webkit-keyframes for all the animations and code to work properly on Chrome/Safari*/
+
+body{
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    max-width: 100%;
+    overflow-x: hidden;
+    color: white;
+    font-family: Prstartk;
+}
+
+@font-face{
+    font-family:Prstartk;
+    src: url(pacman_assets/prstartk.ttf);
+}
+
+/* Navigation Bar Unordered list- want it to be centered on the page*/
+.navigation ul{
+    list-style: none;
+    padding: 0;
+    margin: 10;
+    text-align: center;
+}
+/*When hovered over, the links will fade into yellow using a .5s transition.*/
+.navigation a:hover{
+    color: #FFD300;
+    transition: .5s all ease-in-out;
+    -webkit-transition: 5s;
+}
+
+.navigation li{
+    display: inline-block;
+}
+
+.navigation a{
+    width: 100%;
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+    text-align: center;
+    color: white; 
+    font-size: 15px;
+    text-transform: uppercase; /*changed the texts from lowercase to uppercase*/
+}
+
+#heroImage{
+    display: block;
+    width: 35%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#homeSec{
+    padding: 80px 0px;
+    margin: auto;
+}
+/* A line needs to added at the end of each section; to sperate the them from each other*/
+#homeSec::after{
+    display: block;
+    content: "";
+    border-bottom: 2px dotted #FFD300;
+    padding: 30px;
+    margin: auto;
+    width: 60%;
+}
+/* Flip the Pacman so he faces the left side when ghosts are chasing him.
+- Reduce the size of Pacman is not occupying the most of the page*/
+.Pacman{
+    width: 50px;
+    padding: 20px 54px;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.Pacman2{
+    width: 50px;
+    padding: 55px 40px;
+}
+
+.Ghosts img{
+    width: 50px;
+    padding: 20px 10px;
+}
+/*Flip the Ghosts so they face the right when Pacman is chasing them.*/
+.Ghosts2 img{
+    width: 50px;
+    padding: 55px 10px;
+  -webkit-transform: scale(-1);
+  transform: scaleX(-1);
+}
+
+/*Create a looping animation where the ghosts are chasing Pac Man. Pac Man will chase the ghosts off 
+the left side of the screen and then the animation will loop.*/
+.animation1{
+animation-name: chase;
+position: relative;
+transform: translateX(1100px);
+animation-duration: 5s;
+animation-iteration-count: infinite;
+animation-timing-function: linear;
+}
+
+@keyframes chase{
+    from{ transfrom: translateX(1100px)}
+    to{ transform: translateX(-1100px);}
+}
+
+@-webkit-keyframes chase{
+    from{ transfrom: translateX(1100px)}
+    to{ transform: translateX(-1100px);}
+}
+/*Pac Man and the ghosts appear from the right hand of the screen and dissapear to the left side
+of the screen and the animation will loop.*/
+.animation2  {
+    animation-name: chaseback;
+    transform: translatex(-1500px);
+    animation-duration: 5s;
+    animation-delay: 5.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    position: relative;
+}
+/*Keyframes that create the animation*/
+@keyframes chaseback {
+   from {transform: translateX(-1500px)}
+   to {transform: translateX(1500px)}
+}
+
+@-webkit-keyframes chaseback{
+    from {transform: translateX(-1500px)}
+   to {transform: translateX(1500px)}
+}
+/*The “Insert Coin” text needs to animate a looping blinking pattern, 1s visible, and 1s invisible*/
+#blinkCoins{
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink{
+   50%{
+    opacity: 0;
+   }
+}
+
+@-webkit-keyframes blink{
+    50%{
+        opacity: 0;
+       }
+}
+
+/*High Score Section*/
+#highScores h1{
+    text-transform: uppercase;
+    font-size: 30px;
+    text-align: center;
+    color: #F9ED3F;
+}
+
+#highScores h2{
+    text-transform: uppercase;
+    text-align: center;
+    word-spacing: 5px;
+    font-size: 20px;
+}
+/* A line needs to added at the end of each section; to sperate the them from each other.*/
+#highScores::after{
+    display: block;
+    content: "";
+    border-bottom: 2px dotted #FFD300;
+    padding: 50px;
+    margin: auto;
+    width: 60%;
+}
+
+/*Style the table so it is cenetred in the middele with a good amount of equal sapcing.*/
+table{
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    border-spacing: 10px;
+    border-color: transparent;
+}
+
+th{
+    padding: 30px;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    text-transform: uppercase;
+}
+
+td{
+    font-size: 15px;
+    text-transform: uppercase;
+}
+/*Style the text colour on the “High Scores” list using nth-child()
+- create a formula that makes it easier.*/
+#highScores tr:nth-child(4n-2){
+    color: #ffa002;
+}
+
+#highScores tr:nth-child(4n-5){
+    color: #ff0401;
+}
+
+#highScores tr:nth-child(4n-8){
+    color: #01f8f8;
+}
+
+#highScores tr:nth-child(4n-11){
+    color: #FF60B0;
+}
+/*A looping animation where Pac Man is chasing the ghosts. 
+Pac Man will chase the ghosts off the right side of the screen and then the animation will loop, 
+where the ghosts and Pac Man appear from the left hand of the screen*/
+.animation3{
+    animation-name: blueGhosts;
+    transform: translatex(-1500px);
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    position: relative;
+}
+
+@keyframes blueGhosts {
+    from {transform: translateX(-1500px)}
+    to {transform: translateX(1500px)} 
+}
+
+@-webkit-keyframes blueGhosts{
+    from {transform: translateX(-1500px)}
+   to {transform: translateX(1500px)}
+}
+
+#howToPlay h1{
+    text-transform: uppercase;
+    font-size: 20px;
+    text-align: center;
+}
+
+#howToPlay::after{
+    display: block;
+    content: "";
+    border-bottom: 2px dotted #FFD300;
+    padding: 50px;
+    margin: auto;
+    width: 60%;
+}
+
+#howToPlay p{
+    width: 49%;
+    padding: 20px;
+    margin:auto;
+    line-height: 1.8;
+    text-align: center;
+    font-size: 14pt;
+}
+/*Style the first-line text colour yellow in the How-To Play Section.*/
+p::first-line{
+    color: #FFD300;
+}
+
+#players h1{
+    text-transform: uppercase;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.table2 {
+    margin:auto;
+    padding: 5px;
+    width: 50%;
+    border-color: transparent;
+    text-align: center;
+}
+
+.table2 th{
+    padding:30px;
+    margin:0;
+    font-size: 20px;
+}
+.table2 td{
+    padding:10px 0;
+}
+
+.table2 tr{
+ padding:10px 0;
+}
+/*Style the text colour on the “Players” list using nth-of-type*/
+#players tr:nth-child(2){
+    color: #ff0401;
+}
+#players tr:nth-child(3){
+    color: #FF60B0;
+}
+#players tr:nth-child(4){
+    color: #01f8f8;
+}
+#players tr:nth-child(5){
+    color: #ffa002;
+}
+
+/*Stack the 3 blue Ghosts horizontally*/
+.Ghost3 img{
+    width: 40px;
+    padding: 0px 10px;
+}
+
+.table3 {
+    margin: auto;
+    width: 20%;
+    padding: 20px;
+}
+/*Style the Points text players section*/
+#PTS{
+    color: white;
+}
+
+#Point1{
+    color: #F9ED3F;
+    font-size: 50pt;
+    width: 20px;
+    padding-top: 3px;
+}
+
+#Point2{
+    color: #F9ED3F;
+    font-size: 20pt;
+    width: 20px;
+    padding-top: 3px;
+}
+
+footer{
+    margin: auto;
+    font-size: 10px;
+    padding-top: 10%;
+}
